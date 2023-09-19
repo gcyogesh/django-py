@@ -1,0 +1,37 @@
+
+{% extends "main.html" %}
+
+{% block content %}
+
+
+
+<h1>I am main page over here int the sense of everything</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta numquam fuga ea suscipit nisi? Ad nisi voluptates possimus reiciendis maxime minima, officia aut earum iusto repudiandae placeat facere blanditiis nostrum!</p>
+f  
+<style>
+    .box{
+        width: 300px;
+        background-color: yellow;
+        float: left;
+        margin: 10px;
+        border-radius: 12px;
+        padding : 12px;
+    }
+    .box:hover{
+        background: blue;
+        color: red;
+        transition:0.6s;
+        
+    }
+</style>
+    
+    {% for student in students %}
+        <div class="box">
+            <h2>{{student.name}}</h2>
+            <p>{{student.email}}</p>
+            <p>{{student.city}}</p>
+        </div>
+
+   {% endfor %}
+
+{% endblock content %}

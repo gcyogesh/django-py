@@ -1,0 +1,53 @@
+{% extends 'layouts/main.html' %} {% block content %}
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">News List</div>
+    <hr />
+  </div>
+  <div class="row">
+            {% for news in newsData %}
+            <div class="col-md-4">
+                <div class="card">
+                    {% if news.image %}
+                    <img
+                    src="{{ news.image.url }}" height="200"  class="card-img-top"
+                    
+                    alt="..."
+                    />
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ news.title }}</h5>
+                        <p class="card-text">{{ news.get_limit_description }}</p>
+                        <a href="{% url 'news_details' news.slug %}" class="btn btn-primary">Go Somewhere</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+          <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ newsData.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{newsData.next_page_number }}">next</a>
+                    <a href="?page={{ newsData.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        </div>
+        {% comment %} {% endfor %} {% endcomment %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

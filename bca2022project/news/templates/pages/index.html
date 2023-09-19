@@ -1,0 +1,48 @@
+{% extends 'layouts/main.html' %}
+
+{% block content %}
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            Bca News
+        </div>
+    </div>
+    <div class="row">
+        {% for category in categoryData %}
+        <div class="col-md-12">
+            <h1><a href="">{{ category.name }}</a></h1>
+            <div class="row">
+                {% for news in category.news_set.all %}
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        {% if news.image %}
+                        <img class="card-img-top" src="{{news.image.url}}" alt="Card image cap" style="height:200px">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{news.title}}</h5>
+                            <p class="card-text">{{news.get_limit_description}}</p>
+                            <a href="{% url 'news_details' news.slug %}" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+        </div>
+
+        {% endfor %}
+        <!-- </div> -->
+    </div>
+</div>
+
+{% endblock %}
+
+

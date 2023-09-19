@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+
+{% block content %}
+  
+<h1>Hello i am insert</h1>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad officia nam vero tenetur, nisi harum libero enim quos non qui a iste dolores consectetur ullam blanditiis alias fuga facilis earum!</p>
+
+<hr>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name"> <br> <br>
+    <label for="email">Email</label>
+    <input type="email" name="email" required id="email"> <br> <br>
+    <label for="city">City</label>
+    <input type="text" name="city" id="city"> <br> <br>
+    <button>Add record</button>
+    
+</form>
+
+{% endblock content %}
+
